@@ -1,3 +1,7 @@
+const killp = require('kill-port');
+killp(80, "tcp");
+killp(3000, "tcp");
+
 const api = require("./api.js");
 const control = require("./control.js");
 

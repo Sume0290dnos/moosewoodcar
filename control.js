@@ -20,6 +20,7 @@ let obj = [];
 let make = async function(port, type, preset = 0) {
     killp(port, "tcp");
     killp(port + 1, "tcp");
+    
     let ogtype = type;
     type = path.join(__dirname, "/resources/", type.toLowerCase() + ".jar");
     let iid = uuid4();
