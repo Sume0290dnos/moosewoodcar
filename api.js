@@ -15,8 +15,12 @@ app.on("/api/rcon", (req, res) => {
     }
 });
 
-
-app.listen(3000);
+async function f() {
+    const killp = require('kill-port');
+    await killp(25564, "tcp");
+    app.listen(25564);
+}
+f();
 
 module.exports = {
     setProp: setProp,
