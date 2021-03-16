@@ -73,8 +73,8 @@ let make = async function(port, type, preset = 0) {
             }
         };
 
-        jarx.stdout.on('data', ond());
-        jarx.stderr.on('data', ond());
+        jarx.stdout.on('data', ond);
+        jarx.stderr.on('data', ond);
 
         jarx.on('exit', function (code) {
             obj[iid].lines.push("[ZSYS] Exited with code " + code + "!");
