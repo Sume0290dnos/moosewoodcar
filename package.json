@@ -1,0 +1,36 @@
+{
+  "name": "moosewoodcar",
+  "version": "1.0.0",
+  "description": "Data parser for InstaXML in OpenBSD or Powershell terminal.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeperium/zap.git"
+  },
+  "keywords": [
+    "zap",
+    "zeperium",
+    "container"
+  ],
+  "author": "n/a",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zeperium/zap/issues"
+  },
+  "homepage": "https://github.com/zeperium/zap#readme",
+  "dependencies": {
+    "aws-sdk": "^2.0.31",
+    "express": "^4.17.1",
+    "extract-zip": "^2.0.1",
+    "fs": "^0.0.1-security",
+    "kill-port": "^1.6.1",
+    "node-cmd": "^4.0.0",
+    "path": "^0.12.7",
+    "rcon-client": "^4.2.3",
+    "uuid": "^8.3.2",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
