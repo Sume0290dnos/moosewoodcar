@@ -1,4 +1,3 @@
-const { exec } = require('node:child_process');
 let path = require('path'),
     fs = require('fs'),
     nodecmd = require('node-cmd'),
