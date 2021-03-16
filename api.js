@@ -1,6 +1,6 @@
 let control = null;
 
-let setProp = function(i) {
+let setProp = (i) => {
     control = i;
 }
 

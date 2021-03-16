@@ -17,7 +17,7 @@ let loglist = [];
 let curids = [];
 let obj = [];
 
-let make = async function(port, type, preset = 0) {
+let make = async(port, type, preset = 0) => {
     killp(port, "tcp");
     killp(port + 1, "tcp");
     let ogtype = type;
@@ -85,26 +85,26 @@ let make = async function(port, type, preset = 0) {
     });
 }
 
-let stop = async function(id) {
+let stop = async(id) => {
 
 }
 
-let kill = async function(id) {
+let kill = async(id) => {
 
 }
 
-let start = async function(id) {
+let start = async(id) => {
 
 }
 
 let logs = {
-    getLogs: async function(id) {
+    getLogs: async(id) => {
 
     },
-    getLastLog: async function(id) {
+    getLastLog: async(id) => {
 
     },
-    runCommand: async function(id, command, op = true, player = "console") {
+    runCommand: async(id, command, op = true, player = "console") => {
 
     }
 }
