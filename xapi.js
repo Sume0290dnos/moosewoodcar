@@ -1,12 +1,12 @@
 let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
-let makereq = async(url) => {
+let makereq = async function(url) {
     let r = new XMLHttpRequest();
     r.open("GET", url, false);
     r.send();
 }
 
-let getreq = async(url) => {
+let getreq = async function(url) {
     let r = new XMLHttpRequest();
     r.onreadystatechange = function() {
         if(r.readyState == 4) {
