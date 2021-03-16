@@ -64,14 +64,17 @@ let make = async function(port, type, preset = 0) {
     exec("sudo iptables -I INPUT -p tcp --dport 25565 --syn -j ACCEPT || sudo service iptables save");
     
     await new Promise(async(resolve, reject) => {
-        jarx.stdout.on('data', function (data) {
+        let ond = function (data) {
             let data2 = data.toString();
             console.log(data2);
             obj[iid].lines.push(data2);
             if(data2.includes("RCON running on ")) {
                 resolve();
             }
-        });
+        };
+
+        jarx.stdout.on('data', ond());
+        jarx.stderr.on('data', ond());
 
         jarx.on('exit', function (code) {
             obj[iid].lines.push("[ZSYS] Exited with code " + code + "!");
