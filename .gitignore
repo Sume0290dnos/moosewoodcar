@@ -1,9 +1,5 @@
 node_modules/*
 package-lock.json
-resources/boxes/*
-!resources/boxes/.hold
-zc.log
-zc2.log
-nohup.out
-output.log
+resources/box/*
+!resources/box/.hold
 resources/inuse.jar
