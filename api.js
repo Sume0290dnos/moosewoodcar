@@ -16,8 +16,9 @@ app.on("/api/rcon", (req, res) => {
 });
 
 async function f() {
-    const killp = require('kill-port');
-    await killp(25564, "tcp");
+    // const killp = require('kill-port');
+    // killp(25564, "tcp");
+
     app.listen(25564);
 }
 f();
