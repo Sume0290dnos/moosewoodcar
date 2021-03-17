@@ -37,7 +37,7 @@ let make = async function(type, preset = 0) {
     let box = path.join(__dirname, "/resources/box");
 
     fs.chmodSync(box, 0775);
-    fs.appendFileSync(path.join(box, "z.log"), "[ZSYS] Started new server getup at " + Date.now().toString());
+    fs.appendFileSync(path.join(box, "z.log"), "\n\n\n[ZSYS] Started new server getup at " + Date.now() + "\n");
 
     if(preset !== 0) {
         await new Promise(async(resolve, reject) => {
@@ -63,7 +63,21 @@ let make = async function(type, preset = 0) {
     fs.writeFileSync(path.join(box, "bukkit.yml"), "settings:\n  allow-end: false\n  warn-on-overload: false\n  permissions-file: permissions.yml\n  update-folder: update\n  plugin-profiling: false\n  connection-throttle: 4000\n  query-plugins: true\n  deprecated-verbose: default\n  shutdown-message: Zeperium node now offline!\n  minimum-api: none\nspawn-limits:\n  monsters: 0\n  animals: 10\n  water-animals: 15\n  water-ambient: 20\n  ambient: 15\nchunk-gc:\n  period-in-ticks: 600\nticks-per:\n  animal-spawns: 400\n  monster-spawns: 1\n  water-spawns: 1\n  water-ambient-spawns: 1\n  ambient-spawns: 1\n  autosave: 6000");
     fs.writeFileSync(path.join(box, "commands.yml"), "command-block-overrides: []\nignore-vanilla-permissions: true\naliases:\n  icanhasbukkit:\n  - version $1-");
 
-    let s = spawn("nohup java -Xmx1G -jar ./resources/inuse.jar --online-mode false --max-players 50 --port 25565 --nogui >resources/box/g.out 2>resources/box/g2.out &");
+    try {
+        fs.chmodSync(box, 0775);
+        let s = spawn("sudo java -Xmx1G -jar " + __dirname + "/resources/inuse.jar --online-mode false --max-players 50 --port 25565 --nogui", {cwd: path.join(__dirname + "/resources/box"), shell: true, detached: true});
+        s.stdout.on("data", function(d) {
+            fs.appendFileSync("resources/box/z.log", "\n" + d.toString());
+            console.log(d.toString());
+        });
+        s.stderr.on("data", function(d) {
+            fs.appendFileSync("resources/box/z.log", "\n" + d.toString());
+            console.log(d.toString());
+        });
+    } catch(err) {
+        fs.chmodSync(box, 0775);
+        console.log(err);
+    }
 }
 
 let stop = async function(id) {

@@ -15,7 +15,8 @@ app.on("/api/rcon", (req, res) => {
     }
 });
 
-app.listen(25564);
+
+// app.listen(25564);
 
 module.exports = {
     setProp: setProp,
