@@ -61,7 +61,7 @@ let make = async function(port, type, preset = 0) {
     fs.writeFileSync(path.join(box, "bukkit.yml"), "settings:\n  allow-end: false\n  warn-on-overload: false\n  permissions-file: permissions.yml\n  update-folder: update\n  plugin-profiling: false\n  connection-throttle: 4000\n  query-plugins: true\n  deprecated-verbose: default\n  shutdown-message: Zeperium node now offline!\n  minimum-api: none\nspawn-limits:\n  monsters: 0\n  animals: 10\n  water-animals: 15\n  water-ambient: 20\n  ambient: 15\nchunk-gc:\n  period-in-ticks: 600\nticks-per:\n  animal-spawns: 400\n  monster-spawns: 1\n  water-spawns: 1\n  water-ambient-spawns: 1\n  ambient-spawns: 1\n  autosave: 6000");
     fs.writeFileSync(path.join(box, "commands.yml"), "command-block-overrides: []\nignore-vanilla-permissions: true\naliases:\n  icanhasbukkit:\n  - version $1-");
     
-    let jarx = spawn("cd " + box + " && sudo -S java -Xmx1G -jar " + type + " --online-mode false --max-players 50 --port " + port + " --nogui", {shell: true});
+    let jarx = spawn("cd " + box + " && java -Xmx1G -jar " + type + " --online-mode false --max-players 50 --port " + port + " --nogui", {shell: true});
     
     await new Promise(async(resolve, reject) => {
         let ond = function (data) {
