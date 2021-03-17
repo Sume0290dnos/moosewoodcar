@@ -22,7 +22,7 @@ let make = async function(type, preset = 0) {
     killp(port, "tcp");
     killp(port + 1, "tcp");
     killp(port - 1, "tcp");
-    
+
     let ogtype = type;
     let typeog = path.join(__dirname, "/resources/", type.toLowerCase() + ".jar");
     fs.copyFileSync(typeog, path.join(__dirname, "/resources/", "inuse.jar"));
@@ -36,7 +36,6 @@ let make = async function(type, preset = 0) {
     }
     let box = path.join(__dirname, "/resources/box/");
 
-    fs.mkdirSync(box);
     fs.chmodSync(box, 0775);
     fs.appendFileSync(path.join(box, "z.log"), "[ZSYS] Started new server getup at " + Date.now().toString());
 
